@@ -54,3 +54,23 @@ func ExampleNewCache() {
 	fmt.Println(date)
 	// Output: 28614.50
 }
+
+func ExampleConvert() {
+	loc, _ := time.LoadLocation("America/New_York")
+	at := time.Date(2026, time.November, 18, 19, 44, 7, 0, time.UTC)
+	reading, _ := startrekdate.Convert(at, loc)
+	fmt.Println(reading)
+	// Output: 28614.82 official (UTC), 28614.61 local (America/New_York)
+}
+
+func ExampleParseLocal() {
+	at, _ := startrekdate.ParseLocal("2026-11-18", "14:44:07", "America/New_York")
+	fmt.Println(at.UTC().Format(time.RFC3339))
+	// Output: 2026-11-18T19:44:07Z
+}
+
+func ExampleParseLocal_skippedHour() {
+	_, err := startrekdate.ParseLocal("2026-03-08", "02:30", "America/New_York")
+	fmt.Println(err)
+	// Output: startrekdate: that local time does not exist in the zone
+}

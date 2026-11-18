@@ -6,6 +6,10 @@
 // about), rounded to the nearest whole number. The fraction is the elapsed hundredths of the
 // UTC day. A date prints as NNNNN.NN, for example 28614.82.
 //
+// The official value counts UTC days and the UTC time of day. Local gives the same formula for the
+// calendar day and wall-clock time in a time zone, Convert returns both side by side as a
+// Reading, and ParseLocal turns a typed date, time and zone into a moment.
+//
 // Official is a pure function. Source reads the time from a Clock you inject, which keeps
 // callers testable. Cache serves one value per hundredth of a day (TickInterval, 14 minutes
 // 24 seconds) so a busy server computes it once per tick.

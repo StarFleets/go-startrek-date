@@ -21,7 +21,6 @@ limitations under the License.
 import (
 	"errors"
 	"fmt"
-	"math"
 	"sync"
 	"time"
 )
@@ -50,19 +49,7 @@ func (d Date) String() string {
 // Official returns the official stardate for t, which is read in UTC. A time before the
 // founding date returns ErrBeforeEpoch.
 func Official(t time.Time) (Date, error) {
-	t = t.UTC()
-	day := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, time.UTC)
-	if day.Before(epoch) {
-		return Date{}, ErrBeforeEpoch
-	}
-	days := int(day.Sub(epoch) / (24 * time.Hour))
-	yearLength := 365.0
-	if isLeap(t.Year()) {
-		yearLength = 366.0
-	}
-	whole := int(math.Round(1000 / yearLength * float64(days)))
-	seconds := t.Hour()*3600 + t.Minute()*60 + t.Second()
-	return Date{Whole: whole, Hundredths: seconds * 100 / 86400}, nil
+	return Local(t, time.UTC)
 }
 
 func isLeap(year int) bool {
