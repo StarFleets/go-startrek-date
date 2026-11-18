@@ -8,9 +8,9 @@ name: GoLic
 # to main: the PR run already checked the tree being merged (see "CI and Actions
 # minutes" in CLAUDE.md for the ruleset setting that keeps that true).
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review]
+  release:
+    types: [published]
+  workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

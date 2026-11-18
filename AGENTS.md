@@ -57,3 +57,7 @@ Follow the logging rules in `CLAUDE.md`. In short:
 - Open every PR as a draft. CI skips drafts, so run the full checks locally, push once they pass,
   and mark the PR ready when the work is finished; see CLAUDE.md "CI and Actions minutes".
 - <project-specific conventions, non-obvious constraints, and traps an agent should know>
+
+## CI ramp
+
+CI is kept minimal in early development. Today a pull request runs lint, tests and build when Go sources or go.mod change (path filtered, older runs cancelled), the PR hygiene check, and YAML or workflow lint when those files change. gosec, govulncheck and the Go dependency licence check run on go.mod or go.sum changes, on a release and by hand; the licence header check runs on a release and by hand; label checks run by hand; there is no scheduled run. The full set returns before the first release. The rulesets require no status checks.
