@@ -1,0 +1,5 @@
+# The maintainer owns and reviews everything by default.
+* @Bugs5382
+# Workflow and CODEOWNERS changes need the maintainer's review.
+/.github/workflows/** @Bugs5382
+/.github/CODEOWNERS @Bugs5382
