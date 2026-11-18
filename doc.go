@@ -1,5 +1,4 @@
-// Package startrekdate computes the Starfleets official stardate, the one the starfleets.net
-// community has shown since 1998.
+// Package startrekdate computes the Starfleets official stardate.
 //
 // The whole part counts days since the founding date, 15 April 1998, scaled so a year is about
 // 1000 units: days * 1000 / 365 (366 in a leap year, judged on the year of the date asked
