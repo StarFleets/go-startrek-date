@@ -34,8 +34,8 @@ func utc(s string) time.Time {
 	return t
 }
 
-// Vectors come from the old PHP formula (include/stardate.inc on starfleets.net), except the
-// fraction, which is the elapsed hundredths of the day instead of the PHP rounding.
+// Fixed vectors from the published formula; the fraction is the elapsed hundredths of the day,
+// rounded down.
 var vectors = []struct {
 	at   string
 	want string

@@ -36,7 +36,7 @@ func zone(t *testing.T, name string) *time.Location {
 	return loc
 }
 
-// Vectors come from the old PHP formula applied to the zone's own calendar day and wall clock.
+// Fixed vectors from the published formula applied to the zone's own calendar day and wall clock.
 var zoneVectors = []struct {
 	utc, zone, official, local string
 }{
