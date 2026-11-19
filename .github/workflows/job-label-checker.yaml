@@ -22,8 +22,7 @@ name: Label Checker
 # label comes from the title, so this workflow keeps `edited` (a retitled PR is
 # relabeled); the build and security workflows do not react to edits.
 on:
-  pull_request:
-    types: [opened, reopened, edited, synchronize, ready_for_review]
+  workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
